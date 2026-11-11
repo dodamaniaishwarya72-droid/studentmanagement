@@ -2,41 +2,76 @@
 
 A web-based Student Management System built using Python, Flask, SQLite, HTML, and CSS.
 
+The application provides a simple dashboard to manage student records efficiently.
+
 ## Features
 
 - Add new student records
 - View all registered students
-- Edit student details
+- Edit existing student details
 - Delete student records
 - Search students
 - Dashboard with student statistics
-- Premium dark-themed Campus360 interface
+- Premium dark-themed user interface
 
-## Technologies Used
+## Tech Stack
 
-- Python
-- Flask
-- SQLite
-- HTML5
-- CSS3
+- **Backend:** Python, Flask
+- **Database:** SQLite
+- **Frontend:** HTML, CSS
+- **Version Control:** Git and GitHub
 
-## How to Run
+## Project Structure
 
-1. Clone this repository.
-2. Open the project folder in VS Code.
+```text
+StudentManagement/
+├── static/
+│   └── style.css
+├── templates/
+│   ├── index.html
+│   └── edit.html
+├── app.py
+├── database.py
+├── .gitignore
+└── README.md
+```
+
+## Installation and Setup
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/dodamaniaishwarya72-droid/studentmanagement.git
+```
+
+2. Open the project folder:
+
+```bash
+cd studentmanagement
+```
+
 3. Install Flask:
 
-   `pip install flask`
+```bash
+pip install flask
+```
 
 4. Run the application:
 
-   `python app.py`
+```bash
+python app.py
+```
 
 5. Open your browser and visit:
 
-   `http://127.0.0.1:5000`
+```text
+http://127.0.0.1:5000
+```
 
-## Project Purpose
+## Purpose
 
-This project was developed to understand Python Flask web development, database operations, and CRUD functionality.
+This project was developed to practise Python web development, database integration, CRUD operations, and frontend design.
 
+## Author
+
+**Aishwarya**
