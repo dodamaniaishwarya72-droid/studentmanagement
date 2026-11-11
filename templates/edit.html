@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Student</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <h1>Edit Student Details</h1>
+        <p>Update the student's information below.</p>
+    </div>
+
+<div class="dashboard">
+
+    <div class="stat-card">
+        <h3>Total Students</h3>
+        <p>{{ total_students }}</p>
+    </div>
+
+    <div class="stat-card">
+        <h3>Departments</h3>
+        <p>{{ total_departments }}</p>
+    </div>
+
+    <div class="stat-card">
+        <h3>Semesters</h3>
+        <p>{{ total_semesters }}</p>
+    </div>
+
+</div>
+
+    <div class="card">
+
+        <h2>Update Student</h2>
+
+        <form method="POST">
+
+            <label>Student Name</label>
+            <input type="text" name="name"
+                   value="{{ student[1] }}" required>
+
+            <label>Email Address</label>
+            <input type="email" name="email"
+                   value="{{ student[2] }}" required>
+
+            <label>Department</label>
+            <input type="text" name="department"
+                   value="{{ student[3] }}" required>
+
+            <label>Semester</label>
+            <input type="number" name="semester"
+                   value="{{ student[4] }}"
+                   min="1" max="8" required>
+
+            <button type="submit">Update Student</button>
+
+        </form>
+
+        <br>
+        <a href="/">Back to Home</a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

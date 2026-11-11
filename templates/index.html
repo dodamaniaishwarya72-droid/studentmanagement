@@ -1,0 +1,461 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Campus360 | Student Management</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="app-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <div class="brand-icon">
+                C
+            </div>
+
+            <div>
+                <h2>Campus360</h2>
+                <span>STUDENT PORTAL</span>
+            </div>
+
+        </div>
+
+
+        <p class="nav-heading">MAIN MENU</p>
+
+        <nav>
+
+            <a href="/" class="nav-link active">
+                <i class="fa-solid fa-house"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="#add-student" class="nav-link">
+                <i class="fa-solid fa-user-plus"></i>
+                <span>Add Student</span>
+            </a>
+
+            <a href="#student-directory" class="nav-link">
+                <i class="fa-solid fa-users"></i>
+                <span>Student Directory</span>
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-footer">
+
+            <div class="footer-icon">
+                <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+
+            <div>
+                <span>STUDENT MANAGEMENT</span>
+                <p>Campus360 v1.0</p>
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <div>
+                <p class="breadcrumb">
+                    Workspace / Dashboard
+                </p>
+
+                <h1>Dashboard Overview</h1>
+            </div>
+
+
+            <div class="admin-profile">
+
+                <div class="profile-avatar">
+                    A
+                </div>
+
+                <div>
+                    <strong>Administrator</strong>
+                    <span>Management Panel</span>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- WELCOME SECTION -->
+        <section class="welcome-section">
+
+            <div class="welcome-icon">
+                <i class="fa-solid fa-chart-line"></i>
+            </div>
+
+            <div class="welcome-text">
+                <h2>Welcome to Campus360</h2>
+
+                <p>
+                    Manage your student records from one central workspace.
+                </p>
+            </div>
+
+            <span class="status-label">
+                <i class="fa-solid fa-circle"></i>
+                SYSTEM ACTIVE
+            </span>
+
+        </section>
+
+
+        <!-- DASHBOARD STATISTICS -->
+        <section class="dashboard">
+
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+                    <span class="stat-label">TOTAL STUDENTS</span>
+
+                    <div class="stat-icon orange">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                </div>
+
+                <p>{{ total_students }}</p>
+
+                <span class="stat-description">
+                    Registered students
+                </span>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+                    <span class="stat-label">DEPARTMENTS</span>
+
+                    <div class="stat-icon blue">
+                        <i class="fa-solid fa-building-columns"></i>
+                    </div>
+                </div>
+
+                <p>{{ total_departments }}</p>
+
+                <span class="stat-description">
+                    Active departments
+                </span>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+                    <span class="stat-label">SEMESTERS</span>
+
+                    <div class="stat-icon green">
+                        <i class="fa-solid fa-book-open"></i>
+                    </div>
+                </div>
+
+                <p>{{ total_semesters }}</p>
+
+                <span class="stat-description">
+                    Semesters represented
+                </span>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- ADD STUDENT -->
+        <section class="card" id="add-student">
+
+            <div class="section-heading">
+
+                <div class="heading-icon">
+                    <i class="fa-solid fa-user-plus"></i>
+                </div>
+
+                <div>
+                    <h2>Add New Student</h2>
+
+                    <p>
+                        Enter student details to register a new record.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <form action="/add" method="POST" class="student-form">
+
+                <div class="form-grid">
+
+                    <div>
+                        <label>
+                            <i class="fa-solid fa-user"></i>
+                            Student Name
+                        </label>
+
+                        <input
+                            type="text"
+                            name="name"
+                            placeholder="Enter student name"
+                            required
+                        >
+                    </div>
+
+
+                    <div>
+                        <label>
+                            <i class="fa-solid fa-envelope"></i>
+                            Email Address
+                        </label>
+
+                        <input
+                            type="email"
+                            name="email"
+                            placeholder="Enter email address"
+                            required
+                        >
+                    </div>
+
+
+                    <div>
+                        <label>
+                            <i class="fa-solid fa-building"></i>
+                            Department
+                        </label>
+
+                        <input
+                            type="text"
+                            name="department"
+                            placeholder="Enter department"
+                            required
+                        >
+                    </div>
+
+
+                    <div>
+                        <label>
+                            <i class="fa-solid fa-book"></i>
+                            Semester
+                        </label>
+
+                        <input
+                            type="number"
+                            name="semester"
+                            min="1"
+                            max="8"
+                            placeholder="Enter semester"
+                            required
+                        >
+                    </div>
+
+                </div>
+
+
+                <button type="submit" class="primary-button">
+                    <i class="fa-solid fa-plus"></i>
+                    Register Student
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <!-- STUDENT DIRECTORY -->
+        <section class="card" id="student-directory">
+
+            <div class="section-heading">
+
+                <div class="heading-icon">
+                    <i class="fa-solid fa-users"></i>
+                </div>
+
+                <div>
+                    <h2>Student Directory</h2>
+
+                    <p>
+                        View and manage registered student records.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- SEARCH -->
+            <form action="/" method="GET" class="search-form">
+
+                <div class="search-input-wrapper">
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                    <input
+                        type="text"
+                        name="search"
+                        placeholder="Search by name, email or department..."
+                        value="{{ request.args.get('search', '') }}"
+                    >
+
+                </div>
+
+                <button type="submit">
+                    Search
+                </button>
+
+                <a href="/">
+                    <i class="fa-solid fa-rotate-left"></i>
+                    Clear
+                </a>
+
+            </form>
+
+
+            <!-- TABLE -->
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>ID</th>
+                            <th>STUDENT NAME</th>
+                            <th>EMAIL</th>
+                            <th>DEPARTMENT</th>
+                            <th>SEMESTER</th>
+                            <th>ACTIONS</th>
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        {% for student in students %}
+
+                        <tr>
+
+                            <td>
+                                <span class="student-id">
+                                    #{{ student[0] }}
+                                </span>
+                            </td>
+
+                            <td>
+                                <div class="student-name">
+                                    <div class="student-avatar">
+                                        {{ student[1][0]|upper }}
+                                    </div>
+
+                                    <strong>
+                                        {{ student[1] }}
+                                    </strong>
+                                </div>
+                            </td>
+
+                            <td>{{ student[2] }}</td>
+
+                            <td>
+                                <span class="department-badge">
+                                    {{ student[3] }}
+                                </span>
+                            </td>
+
+                            <td>
+                                Semester {{ student[4] }}
+                            </td>
+
+                            <td class="actions">
+
+                                <a
+                                    class="edit"
+                                    href="/edit/{{ student[0] }}"
+                                    title="Edit student"
+                                >
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </a>
+
+                                <a
+                                    class="delete"
+                                    href="/delete/{{ student[0] }}"
+                                    title="Delete student"
+                                    onclick="return confirm('Are you sure you want to delete this student?')"
+                                >
+                                    <i class="fa-solid fa-trash"></i>
+                                </a>
+
+                            </td>
+
+                        </tr>
+
+                        {% else %}
+
+                        <tr>
+                            <td colspan="6" class="empty-state">
+                                <i class="fa-solid fa-user-slash"></i>
+                                <p>No student records found.</p>
+                            </td>
+                        </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- FOOTER -->
+        <footer class="page-footer">
+
+            <span>
+                Campus360 Student Management System
+            </span>
+
+            <span>
+                Designed for smarter campus administration.
+            </span>
+
+        </footer>
+
+
+    </main>
+
+</div>
+
+</body>
+</html>
